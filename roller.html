@@ -68,6 +68,7 @@ function roll4droplowest(element) {
 function rollAbilityScores(list_id, total_id) {
   var list = document.getElementById(list_id);
   var point_buy_total = 0;
+  var stat = ["STR", "DEX", "CON", "INT", "WIS", "CHA"];
   for (var i = 0; i < list.childElementCount; i++) {
     // roll each ability score and grab it's point buy cost
     ability_score = roll4droplowest(list.children[i]);
@@ -75,7 +76,7 @@ function rollAbilityScores(list_id, total_id) {
     point_buy_total += ability_score;
     // shove the results into the page
     list.children[i].innerHTML +=
-      ' ';
+      ' ' + stat[i];
   }
   // dont forget to put in the point buy total
   document.getElementById(total_id).innerHTML = point_buy_total;
@@ -122,7 +123,8 @@ function changeScore(element_id, delta) {
   
   <div style="padding:10px;">
   	Mercer Rules: -r4d6, drop lowest. Reroll until dice total greater than 70.
-   <br><br>
+    <br>Rolls can be placed anywhere</br>
+   <br>
     Colville Rules: -r4d6, drop lowest.  Reroll until two skills 15+
     <br>
     Each skill point must go down the list.  First roll to STR, second to DEX, etc. 
